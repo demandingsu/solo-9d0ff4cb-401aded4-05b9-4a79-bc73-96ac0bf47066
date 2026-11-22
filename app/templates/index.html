@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>园区月度电量试算工具</h1>
+<p>上传园区月度电量 XLSX，选择本楼栋工作表与园区总计单元格，导出可改读数的试算表。
+其余楼栋底数将折算为一个汇总常数，本楼栋读数修改后园区总计自动联动重算。</p>
+<form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+  <label for="file">XLSX 文件（≤ 20MB）</label>
+  <input type="file" id="file" name="file" accept=".xlsx" required>
+  <p class="hint">底数须为整数；公式仅支持同簿单元格/区域引用、SUM、加法与减法。</p>
+  <button type="submit">上传并选择楼栋</button>
+</form>
+{% endblock %}

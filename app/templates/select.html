@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>选择楼栋与园区总计单元格</h1>
+<p>文件：<code>{{ filename }}</code></p>
+<form action="{{ url_for('export') }}" method="post">
+  <input type="hidden" name="file_id" value="{{ file_id }}">
+  <input type="hidden" name="filename" value="{{ filename }}">
+
+  <label for="building_sheet">本楼栋工作表</label>
+  <select id="building_sheet" name="building_sheet" required>
+    {% for s in sheets %}
+      <option value="{{ s }}">{{ s }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="total_cell">园区总计单元格</label>
+  <input type="text" id="total_cell" name="total_cell" placeholder="例如 D2 或 园区汇总!D2" required>
+  <p class="hint">可写单元格坐标（默认视为位于所选楼栋表），或 <code>工作表!单元格</code> 形式的跨表位置。</p>
+
+  <button type="submit">生成试算 XLSX</button>
+</form>
+{% endblock %}

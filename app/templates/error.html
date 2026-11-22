@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}无法导出 —— 园区电量试算{% endblock %}
+{% block body %}
+<h1>无法导出试算表</h1>
+<div class="error-box">
+  <strong>原因：</strong>{{ message }}
+</div>
+<p class="hint">请按提示的单元格位置在原表中修正公式（移除不支持的函数/运算符或打断循环引用）后重新上传。</p>
+<form action="{{ url_for('index') }}" method="get">
+  <button type="submit">重新上传</button>
+</form>
+{% endblock %}

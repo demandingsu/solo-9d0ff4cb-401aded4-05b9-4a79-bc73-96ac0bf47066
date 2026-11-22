@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    image: park-electricity-trial:latest
+    container_name: park-electricity-trial
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      DATA_DIR: /data
+      SECRET_KEY: change-me-in-production
+    restart: unless-stopped
